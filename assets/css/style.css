@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+}
+
+header, footer {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1, h2, p {
+    margin: 0;
+}
+
+li {
+    padding: 10px;
+    background-color: purple;
+    color: white;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
