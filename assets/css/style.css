@@ -33,3 +33,16 @@ li {
     margin-bottom: 10px;
     cursor: pointer;
 }
+
+.quizContainer {
+    text-align: center;
+}
+
+.questions {
+    padding: 20px;
+}
+
+.options {
+    padding: 0;
+}
+
