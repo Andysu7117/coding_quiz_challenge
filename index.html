@@ -8,22 +8,29 @@
 </head>
 <body>
     <header>
-        <h1>Coding Quiz</h1>
+    </div>
+    <div class= "card timer">
+      <div class = "timer-text">
+        <p>Time: <span class="timer-count">60</span></p>
+    </div>
+
     </header>
 
-    <section id="quiz-container">
-        <div id="questions"></div>
+    <section>
+        <h1>Coding Quiz</h1>
+        <button class="start-btn">Start Quiz</button>
+    </section>
+    <section class="quiz-container">
+        <div class="questions"></div>
 
-        <ol id="options"></ol>
-
-        <button id="start-btn">Start Quiz</button>
+        <ol class="options"></ol>
     </section>
 
-    <section id="score-container">
+    <section class="score-container">
         <h2>Finished!</h2>
-        <p>Your score is <span id="final-score"></span></p>
+        <p>Your score is <span class="final-score"></span></p>
     </section>
-    <form>
+    <form class="intials-form">
         <label for="initials">Enter your initials:</label>
         <input type="text" id="initials">
         <button id="submit-btn">Submit</button>

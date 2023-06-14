@@ -1,3 +1,8 @@
+:root {
+    --textcolor: white;
+    --boxcolor: rgb(209, 84, 209);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -6,20 +11,25 @@ body {
     font-family: Arial;
 }
 
-header, footer {
-    background-color: white;
+header {
+    text-align: end;
+}
+
+footer {
+    background-color: var(--textcolor);
     padding: 20px;
     text-align: center;
 }
 
 h1, h2, p {
     margin: 0;
+    text-align: center;
 }
 
 li {
     padding: 10px;
-    background-color: purple;
-    color: white;
+    background-color: var(--boxcolor);
+    color: var(--textcolor);
     margin-bottom: 10px;
     cursor: pointer;
 }
