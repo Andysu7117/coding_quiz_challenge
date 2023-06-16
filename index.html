@@ -8,9 +8,17 @@
 </head>
 <body>
     <header>
+        <div class= "card timer">
+            <div class = "timer-text">
+              <p>Time: <span class="timer-count">60</span></p>
+            </div>
+        </div>
+    </header>
+
+    <section class="start-quiz">
         <h1>Coding Quiz</h1>
         <button class="start-btn">Start Quiz</button>
-    </header>
+    </section>
 
     <section class="quiz-container">
         <div class="questions"></div>
@@ -18,23 +26,15 @@
         <ol class="options"></ol>
     </section>
 
-    <section>
-    </div>
-    <div class= "card timer">
-      <div class = "timer-text">
-        <p>Time: <span class="timer-count">60</span></p>
-    </div>
-    </section>
-
     <section class="score-container">
         <h2>Finished!</h2>
         <p>Your score is <span class="final-score"></span></p>
+        <form class="intials-form">
+            <label for="initials">Enter your initials:</label>
+            <input type="text" id="initials">
+            <button id="submit-btn">Submit</button>
+        </form>
     </section>
-    <form class="intials-form">
-        <label for="initials">Enter your initials:</label>
-        <input type="text" id="initials">
-        <button id="submit-btn">Submit</button>
-    </form>
 
     <footer>Made by Andy</footer>
     <script src="assets/js/script.js"></script>
