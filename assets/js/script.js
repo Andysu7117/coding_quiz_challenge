@@ -1,29 +1,29 @@
 // Listing Questions
 var questions = [
     {
-        question: "Question 1",
-        options: ["Option A", "Option B", "Option C", "Option D"],
+        question: "Which of the following is not a position in football/soccer?",
+        options: ["Goal Defence", "Left Midfielder", "Right Fullback", "Centre Back"],
         answer: 0,
     },
     {
-        question: "Question 2",
-        options: ["Option A", "Option B", "Option C", "Option D"],
-        answer: 0,
+        question: "Which is not a basketball position?",
+        options: ["Point Guard", "Small Foward", "Shooting Guard", "Point Foward"],
+        answer: 3,
     },
     {
-        question: "Question 3",
-        options: ["Option A", "Option B", "Option C", "Option D"],
-        answer: 0,
+        question: "What number is Blackjack",
+        options: ["20", "21", "22", "25"],
+        answer: 1,
     },
     {
-        question: "Question 4",
-        options: ["Option A", "Option B", "Option C", "Option D"],
-        answer: 0,
+        question: "How many milligrams in 1 kilogram",
+        options: ["10", "100", "1000", "10000"],
+        answer: 2,
     },
     {
-        question: "Question 5",
-        options: ["Option A", "Option B", "Option C", "Option D"],
-        answer: 0,
+        question: "How many moon's does Earth have",
+        options: ["0", "1", "2", "3"],
+        answer: 1,
     }
 ];
 
@@ -39,6 +39,7 @@ var quizContainer = document.querySelector(".start-quiz")
 var scoreContainer =document.querySelector(".score-container")
 var leaderBoard = document.getElementById("leaderboard")
 var card = document.querySelector(".card")
+var isWrong = document.querySelector(".isWrong")
 
 // Setting global variables
 var currentQuestion = 0;
@@ -95,12 +96,14 @@ function answerChosen(event) {
 
     if (chosenOptionIndex === currentQ.answer) {
         score += 1;
+        isWrong.classList.add("hide")
     } else {
         timerCount -= 5;
         if (timerCount < 0) {
             timerCount = 0;
         }
         timerElement.textContent = timerCount;
+        isWrong.classList.remove("hide")
     }
 
     currentQuestion++;
