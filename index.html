@@ -20,16 +20,27 @@
         <button class="start-btn">Start Quiz</button>
     </section>
 
+    <section>
+        <h1>Leaderboard</h1>
+        <ul id="leaderboard"></ul>
+    </section>
+
     <section class="quiz-container">
         <div class="questions"></div>
 
-        <ol class="options"></ol>
+        <ol class="options hide">
+            <li><button id="option1"></button></li>
+            <li><button id="option2"></button></li>
+            <li><button id="option3"></button></li>
+            <li><button id="option4"></button></li>
+        </ol>
+        
     </section>
 
-    <section class="score-container">
+    <section class="score-container hide">
         <h2>Finished!</h2>
         <p>Your score is <span class="final-score"></span></p>
-        <form class="intials-form">
+        <form class="initials-form">
             <label for="initials">Enter your initials:</label>
             <input type="text" id="initials">
             <button id="submit-btn">Submit</button>

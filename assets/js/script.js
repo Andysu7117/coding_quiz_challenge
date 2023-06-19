@@ -24,8 +24,10 @@ var optionList = document.querySelector(".options")
 var timerElement = document.querySelector(".timer-count")
 var finalScore = document.querySelector(".final-score")
 var initialsForm = document.querySelector(".initials-form")
-var initialsInput = document.getElementById(".initials")
-
+var initialsInput = document.getElementById("initials")
+var quizContainer = document.querySelector(".start-quiz")
+var scoreContainer =document.querySelector(".score-container")
+var leaderBoard = document.getElementById("leaderboard")
 
 // Setting global variables
 var currentQuestion = 0;
@@ -33,8 +35,13 @@ var score = 0;
 var timer;
 var timerCount;
 
+var leaderBoardList = [];
+var leaderBoardScore = [];
+
 // Start Quiz
 function startQuiz() {
+    quizContainer.classList.add("hide")
+    optionList.classList.remove("hide")
     startButton.disabled = true;
     startTimer();
     displayQuestion();
@@ -94,6 +101,7 @@ function answerChosen(event) {
 
 // End Quiz
 function endQuiz() {
+    scoreContainer.classList.remove("hide")
     finalScore.textContent = score;
     questionList.style.display = "none";
     optionList.style.display = "none";
@@ -101,7 +109,55 @@ function endQuiz() {
     initialsForm.style.display = "block";
 }
 
+// Reset Quiz
+function resetQuiz() {
+    initialsInput.value = "";
+    score = 0;
+    currentQuestion = 0;  
+}
+
 // Initials Form
+function storeLeaderBoard() {
+    localStorage.setItem("leaderBoardList", JSON.stringify(leaderBoardList));
+    localStorage.setItem("leaderBoardScore", JSON.stringify(leaderBoardScore));
+}
+
+function renderLeaderBoard() {
+    leaderBoard.innerHTML = "";
+
+    for (var i = 0; i < leaderBoardList.length; i++) {
+        var leader = leaderBoardList[i];
+        var leaderScore = leaderBoardScore[i]
+
+        var li = document.createElement("li");
+        li.textContent = "Name " + leader + " Score: " + leaderScore;
+        li.setAttribute("data-index", i);
+
+        leaderBoard.appendChild(li);
+    }
+}
+
+function storeScore(event) {
+    event.preventDefault();
+
+    var initials = initialsInput.value.trim();
+
+    leaderBoardList.push(initials);
+    leaderBoardScore.push(score)
+
+    initialsInput.value = "";
+    // Save initials and score
+
+    // Save to leaderboard
+    storeLeaderBoard()
+    renderLeaderBoard()
+
+    // Reset quiz
+    resetQuiz()
+}
+
+// Leaderboard
+
 
 // Event Listeners
 startButton.addEventListener("click", startQuiz);
@@ -112,10 +168,40 @@ initialsForm.addEventListener("submit", function(event) {
     event.preventDefault();
 
     var initials = initialsInput.value.trim();
-    // Save initials and score
+
+    if (initials === "") {
+        return;
+    }
+
+
+    leaderBoardList.push(initials);
+    leaderBoardScore.push(score)
+
+    initialsInput.value = "";
+
+    // Save to leaderboard
+    storeLeaderBoard()
+    renderLeaderBoard()
 
     // Reset quiz
-    initialsInput.value = "";
-    score = 0;
-    currentQuestion = 0;    
+    resetQuiz()
 })
+
+function init() {
+    var storedLeaderBoard = JSON.parse(localStorage.getItem("leaderBoardList"));
+    
+    if (storedLeaderBoard !== null) {
+        leaderBoardList = storedLeaderBoard;
+    }
+
+    var storedLeaderBoardScore = JSON.parse(localStorage.getItem("leaderBoardScore"));
+
+    if (storedLeaderBoardScore !== null) {
+        leaderBoardScore = storedLeaderBoardScore;
+    }
+
+    renderLeaderBoard()
+}
+
+init()
+
