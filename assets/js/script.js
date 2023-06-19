@@ -14,6 +14,16 @@ var questions = [
         question: "Question 3",
         options: ["Option A", "Option B", "Option C", "Option D"],
         answer: 0,
+    },
+    {
+        question: "Question 4",
+        options: ["Option A", "Option B", "Option C", "Option D"],
+        answer: 0,
+    },
+    {
+        question: "Question 5",
+        options: ["Option A", "Option B", "Option C", "Option D"],
+        answer: 0,
     }
 ];
 
@@ -28,6 +38,7 @@ var initialsInput = document.getElementById("initials")
 var quizContainer = document.querySelector(".start-quiz")
 var scoreContainer =document.querySelector(".score-container")
 var leaderBoard = document.getElementById("leaderboard")
+var card = document.querySelector(".card")
 
 // Setting global variables
 var currentQuestion = 0;
@@ -40,7 +51,8 @@ var leaderBoardScore = [];
 
 // Start Quiz
 function startQuiz() {
-    quizContainer.classList.add("hide")
+    quizContainer.style.display = "none"
+    card.style.display = "none"
     optionList.classList.remove("hide")
     startButton.disabled = true;
     startTimer();
@@ -130,7 +142,7 @@ function renderLeaderBoard() {
         var leaderScore = leaderBoardScore[i]
 
         var li = document.createElement("li");
-        li.textContent = "Name " + leader + " Score: " + leaderScore;
+        li.textContent = "Name: " + leader + " Score: " + leaderScore;
         li.setAttribute("data-index", i);
 
         leaderBoard.appendChild(li);
@@ -138,8 +150,6 @@ function renderLeaderBoard() {
 }
 
 function storeScore(event) {
-    event.preventDefault();
-
     var initials = initialsInput.value.trim();
 
     leaderBoardList.push(initials);
@@ -165,8 +175,6 @@ startButton.addEventListener("click", startQuiz);
 optionList.addEventListener("click", answerChosen);
 
 initialsForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-
     var initials = initialsInput.value.trim();
 
     if (initials === "") {
@@ -175,16 +183,16 @@ initialsForm.addEventListener("submit", function(event) {
 
 
     leaderBoardList.push(initials);
-    leaderBoardScore.push(score)
+    leaderBoardScore.push(score);
 
     initialsInput.value = "";
 
     // Save to leaderboard
-    storeLeaderBoard()
-    renderLeaderBoard()
+    storeLeaderBoard();
+    renderLeaderBoard();
 
     // Reset quiz
-    resetQuiz()
+    resetQuiz();
 })
 
 function init() {

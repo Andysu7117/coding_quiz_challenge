@@ -1,6 +1,6 @@
 :root {
     --textcolor: white;
-    --boxcolor: rgb(209, 84, 209);
+    --boxcolor: rgb(88, 29, 155);
 }
 
 * {
@@ -30,13 +30,22 @@ h1, h2, p {
     margin: 0;
     text-align: center;
 }
+.quiz-container {
+    align-items: center;
+}
 
+.options {
+    align-items: center;
+}
 .options li {
     padding: 10px;
     background-color: var(--boxcolor);
     color: var(--textcolor);
     margin-bottom: 10px;
     cursor: pointer;
+    border-radius: 10px;
+    width: 100%;
+    align-items: center;
 }
 
 .quiz-container {
@@ -63,3 +72,37 @@ h1, h2, p {
 .hide {
     display: none;
 }
+
+.start-quiz {
+    display: block;
+    color: white;
+    background-color:	var(--boxcolor);
+    border: 1px solid #eceff1;
+    border-radius: 8px;
+    margin: 60px auto;
+    padding: 20px;
+    width: 80vw;
+  }
+
+.card {
+    display: block;
+    color: white;
+    background-color:	var(--boxcolor);
+    border: 1px solid #eceff1;
+    border-radius: 8px;
+    margin: 60px auto;
+    padding: 20px;
+    width: 80vw;
+}
+ button {
+    border-radius: 5px;
+    height: 40px;
+    cursor: pointer;
+    background-color: #681fc9;
+    color: white;
+    font-size: 1em;
+ }
+
+ h1 {
+    padding: 10px;
+ }
